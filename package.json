@@ -1,0 +1,24 @@
+{
+  "name": "blogloveit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "algolia": "hugo-algolia -i \"content/post/**\" -s "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blue-isle/blogloveit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blue-isle/blogloveit/issues"
+  },
+  "homepage": "https://github.com/blue-isle/blogloveit#readme",
+  "description": "",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "xml2js": "^0.4.23",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
