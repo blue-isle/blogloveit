@@ -1,0 +1,160 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Speedtest Iperf3 - 明礼至卓</title><meta name=Description content="A blog recording my life"><meta property="og:title" content="Speedtest Iperf3"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://www.nashome.cn/posts/speedtest-iperf3/"><meta property="og:image" content="https://www.nashome.cn/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-05-21T13:13:03+08:00"><meta property="article:modified_time" content="2022-10-19T19:57:26+08:00"><meta property="og:site_name" content="My cool site"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.nashome.cn/logo.png"><meta name=twitter:title content="Speedtest Iperf3"><meta name=twitter:description content><meta name=application-name content="明礼至卓"><meta name=apple-mobile-web-app-title content="明礼至卓"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.nashome.cn/posts/speedtest-iperf3/><link rel=prev href=https://www.nashome.cn/posts/dynamics-ax-upgrade-to-cu9/><link rel=next href=https://www.nashome.cn/posts/bt-gdutils/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Speedtest Iperf3","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.nashome.cn\/posts\/speedtest-iperf3\/"},"image":[{"@type":"ImageObject","url":"https:\/\/www.nashome.cn\/images\/Apple-Devices-Preview.png","width":3200,"height":2048}],"genre":"posts","keywords":", ","wordcount":571,"url":"https:\/\/www.nashome.cn\/posts\/speedtest-iperf3\/","datePublished":"2020-05-21T13:13:03+08:00","dateModified":"2022-10-19T19:57:26+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"BlueIsle","logo":{"@type":"ImageObject","url":"https:\/\/www.nashome.cn\/images\/avatar.png","width":528,"height":560}},"author":{"@type":"Person","name":"ZhaoQiang"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=明礼至卓><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw'></i></span>明礼至卓</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/ title=GitHub><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=明礼至卓><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw'></i></span>明礼至卓</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/ title=GitHub><i class='fab fa-github fa-fw'></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Speedtest Iperf3</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>ZhaoQiang</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/><i class="far fa-folder fa-fw" aria-hidden=true></i>Categories</a>&nbsp;<a href=/categories/><i class="far fa-folder fa-fw" aria-hidden=true></i>Categories</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2020-05-21>2020-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 571 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 3 分钟&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><ul><li><a href=#群晖安装iperf3-非docker>群晖安装Iperf3 非docker</a><ul><li><a href=#synology-群晖-nas-synogear-diagnosis-tool><strong>Synology 群晖 NAS synogear Diagnosis Tool</strong></a></li></ul></li><li><a href=#电脑安装iperf3>电脑安装iperf3</a></li></ul></li></ul></nav></div></div><div class=content id=content><h2 id=群晖安装iperf3-非docker>群晖安装Iperf3 非docker</h2><h3 id=synology-群晖-nas-synogear-diagnosis-tool><strong>Synology 群晖 NAS synogear Diagnosis Tool</strong></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$ sudo -s
+</span></span><span class=line><span class=cl># synogear list
+</span></span><span class=line><span class=cl>Tools are not installed yet. You can run this command to install it:
+</span></span><span class=line><span class=cl>   synogear install
+</span></span><span class=line><span class=cl>   synogear install
+</span></span><span class=line><span class=cl>   root@nas:~# iperf3
+</span></span><span class=line><span class=cl>-ash: iperf3: command not found
+</span></span><span class=line><span class=cl>root@nas:~# synogear install
+</span></span><span class=line><span class=cl>root@nas:~# iperf3
+</span></span><span class=line><span class=cl>iperf3: parameter error - must either be a client (-c) or server (-s)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Usage: iperf [-s|-c host] [options]
+</span></span><span class=line><span class=cl>       iperf [-h|--help] [-v|--version]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Server or Client:
+</span></span><span class=line><span class=cl>  -p, --port      #         server port to listen on/connect to
+</span></span><span class=line><span class=cl>  -f, --format    [kmgKMG]  format to report: Kbits, Mbits, KBytes, MBytes
+</span></span><span class=line><span class=cl>  -i, --interval  #         seconds between periodic bandwidth reports
+</span></span><span class=line><span class=cl>  -F, --file name           xmit/recv the specified file
+</span></span><span class=line><span class=cl>  -A, --affinity n/n,m      set CPU affinity
+</span></span><span class=line><span class=cl>  -B, --bind      &lt;host&gt;    bind to a specific interface
+</span></span><span class=line><span class=cl>  -V, --verbose             more detailed output
+</span></span><span class=line><span class=cl>  -J, --json                output in JSON format
+</span></span><span class=line><span class=cl>  --logfile f               send output to a log file
+</span></span><span class=line><span class=cl>  -d, --debug               emit debugging output
+</span></span><span class=line><span class=cl>  -v, --version             show version information and quit
+</span></span><span class=line><span class=cl>  -h, --help                show this message and quit
+</span></span><span class=line><span class=cl>Server specific:
+</span></span><span class=line><span class=cl>  -s, --server              run in server mode
+</span></span><span class=line><span class=cl>  -D, --daemon              run the server as a daemon
+</span></span><span class=line><span class=cl>  -I, --pidfile file        write PID file
+</span></span><span class=line><span class=cl>Client specific:
+</span></span><span class=line><span class=cl>  -c, --client    &lt;host&gt;    run in client mode, connecting to &lt;host&gt;
+</span></span><span class=line><span class=cl>  -u, --udp                 use UDP rather than TCP
+</span></span><span class=line><span class=cl>  -b, --bandwidth #[KMG][/#] target bandwidth in bits/sec (0 for unlimited)
+</span></span><span class=line><span class=cl>                            (default 1 Mbit/sec for UDP, unlimited for TCP)
+</span></span><span class=line><span class=cl>                            (optional slash and packet count for burst mode)
+</span></span><span class=line><span class=cl>  -t, --time      #         time in seconds to transmit for (default 10 secs)
+</span></span><span class=line><span class=cl>  -n, --bytes     #[KMG]    number of bytes to transmit (instead of -t)
+</span></span><span class=line><span class=cl>  -k, --blockcount #[KMG]   number of blocks (packets) to transmit (instead of -                                                                                                                                                             t or -n)
+</span></span><span class=line><span class=cl>  -l, --len       #[KMG]    length of buffer to read or write
+</span></span><span class=line><span class=cl>                            (default 128 KB for TCP, 8 KB for UDP)
+</span></span><span class=line><span class=cl>  --cport         &lt;port&gt;    bind to a specific client port (TCP and UDP, default                                                                                                                                                             : ephemeral port)
+</span></span><span class=line><span class=cl>  -P, --parallel  #         number of parallel client streams to run
+</span></span><span class=line><span class=cl>  -R, --reverse             run in reverse mode (server sends, client receives)
+</span></span><span class=line><span class=cl>  -w, --window    #[KMG]    TCP window size (socket buffer size)
+</span></span><span class=line><span class=cl>  -C, --congestion &lt;algo&gt;   set TCP congestion control algorithm (Linux and Free                                                                                                                                                             BSD only)
+</span></span><span class=line><span class=cl>  -M, --set-mss   #         set TCP maximum segment size (MTU - 40 bytes)
+</span></span><span class=line><span class=cl>  -N, --nodelay             set TCP no delay, disabling Nagle&#39;s Algorithm
+</span></span><span class=line><span class=cl>  -4, --version4            only use IPv4
+</span></span><span class=line><span class=cl>  -6, --version6            only use IPv6
+</span></span><span class=line><span class=cl>  -S, --tos N               set the IP &#39;type of service&#39;
+</span></span><span class=line><span class=cl>  -L, --flowlabel N         set the IPv6 flow label (only supported on Linux)
+</span></span><span class=line><span class=cl>  -Z, --zerocopy            use a &#39;zero copy&#39; method of sending data
+</span></span><span class=line><span class=cl>  -O, --omit N              omit the first n seconds
+</span></span><span class=line><span class=cl>  -T, --title str           prefix every output line with this string
+</span></span><span class=line><span class=cl>  --get-server-output       get results from server
+</span></span><span class=line><span class=cl>  --udp-counters-64bit      use 64-bit counters in UDP test packets
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>iperf3 homepage at: http://software.es.net/iperf/
+</span></span><span class=line><span class=cl>Report bugs to:     https://github.com/esnet/iperf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>root@nas:~# synogear list
+</span></span><span class=line><span class=cl>All tools:
+</span></span></code></pre></td></tr></table></div></div><h2 id=电脑安装iperf3>电脑安装iperf3</h2><ol><li>路由器安装iperf3。用ssh或者网页控制台进入路由器后台，然后先执行包更新，再安装iperf3软件，代码如下：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>1. opkg update
+</span></span><span class=line><span class=cl>2. opkg install iperf3
+</span></span></code></pre></td></tr></table></div></div><p>2.路由器端后台运行iperf3.最好使用后台运行否则测速过程中连接断开，就会中断。代码如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>iperf3 -s -D
+</span></span></code></pre></td></tr></table></div></div><p>这里-s 表示运行的是服务器模式，就是测速接收方，-D（大写字母）表示后台运行，断开连接之后还会运行。好了，这样路由器端就弄好了，你可以断开ssh了。</p><p>3.电脑或者手机连接上路由器的无线（或者有线，看你测什么速度），然后运行iperf3测速。
+软件下载链接如下https://iperf.fr/iperf-download.php
+找到适合自己平台的下载下来。如果你是Windows 64位用户，下载这个https://iperf.fr/download/windows/iperf-3.1.3-win64.zip
+下载之后解压缩，然后在解压的文件夹目录运行命令提示符CMD，然后执行测速，代码如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>iperf3 -c 192.168.123.1 -b 1000m -t 60 -i 1 -u
+</span></span></code></pre></td></tr></table></div></div><p>上面这个讲一下，192.168.123.1是路由器的ip地址，我这里用的是老毛子Padavan固件，请你根据自己的路由器地址进行替换。-c表示运行的是客户端模式，就是测速发送方。 -b表示估计带宽，-t表示持续测速时间，就是一共跑60秒，-i表示间隔输出结果时间，就是每隔1秒钟输出一次，-u表示使用udp连接来测速，默认是tcp连接测速，因为tcp要进行确认所以不如udp测速更准确。当然这里默认使用了单线程，你可以使用多线程命令。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>iperf3 -c 192.168.123.1 -b 1000m -t 60 -i 1 -u -P 2
+</span></span></code></pre></td></tr></table></div></div><p>这里是使用了两个线程来跑。我自己测试下来，如果要用多线程，2-4个最好，太多了路由器吃不消（也可能是我手机吃不消）。</p><p>以上方法是从电脑发数据到路由器，测试的是上传速度。同样的你可以在电脑上运行服务端，路由器运行客户端，这样就是测量路由器下载速度了。
+有线链接也可以测一下，看看千兆口是不是真的跑到了千兆网速。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2022-10-19</span></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/posts/speedtest-iperf3/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/>Tags</a>,&nbsp;<a href=/tags/>Tags</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/dynamics-ax-upgrade-to-cu9/ class=prev rel=prev title="Dynamics AX Upgrade to Cu9"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Dynamics AX Upgrade to Cu9</a>
+<a href=/posts/bt-gdutils/ class=next rel=next title="使用宝塔面板安装和管理 Google Drive 百宝箱">使用宝塔面板安装和管理 Google Drive 百宝箱<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.104.3">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2016 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>BlueIsle</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{algoliaAppID:"EO42BFKWB5",algoliaIndex:"hugoblogloveit",algoliaSearchKey:"d3ef25fc7cb90a144ea0139748e4cf6b",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"},twemoji:!0}</script><script type=text/javascript src=/js/theme.min.js></script><script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-105751499-1",{anonymize_ip:!0})</script><script type=text/javascript src="https://www.googletagmanager.com/gtag/js?id=UA-105751499-1" async></script></body></html>

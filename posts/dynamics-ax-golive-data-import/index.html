@@ -1,0 +1,652 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Dynamics AX GoLive Data Import - 明礼至卓</title><meta name=Description content="DynamicsAX项目上线期初数据的初始化-期初余额导入功能"><meta property="og:title" content="Dynamics AX GoLive Data Import"><meta property="og:description" content="DynamicsAX项目上线期初数据的初始化-期初余额导入功能"><meta property="og:type" content="article"><meta property="og:url" content="https://www.nashome.cn/posts/dynamics-ax-golive-data-import/"><meta property="og:image" content="https://www.nashome.cn/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-01-13T14:58:36+08:00"><meta property="article:modified_time" content="2022-10-19T19:57:26+08:00"><meta property="og:site_name" content="My cool site"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.nashome.cn/logo.png"><meta name=twitter:title content="Dynamics AX GoLive Data Import"><meta name=twitter:description content="DynamicsAX项目上线期初数据的初始化-期初余额导入功能"><meta name=application-name content="明礼至卓"><meta name=apple-mobile-web-app-title content="明礼至卓"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.nashome.cn/posts/dynamics-ax-golive-data-import/><link rel=prev href=https://www.nashome.cn/posts/dynamics-ax-auto-generate-xml/><link rel=next href=https://www.nashome.cn/posts/dynamics-ax-webservice/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Dynamics AX GoLive Data Import","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.nashome.cn\/posts\/dynamics-ax-golive-data-import\/"},"image":[{"@type":"ImageObject","url":"https:\/\/www.nashome.cn\/images\/Apple-Devices-Preview.png","width":3200,"height":2048}],"genre":"posts","keywords":"Ax2009, Data, Golive","wordcount":1083,"url":"https:\/\/www.nashome.cn\/posts\/dynamics-ax-golive-data-import\/","datePublished":"2020-01-13T14:58:36+08:00","dateModified":"2022-10-19T19:57:26+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"BlueIsle","logo":{"@type":"ImageObject","url":"https:\/\/www.nashome.cn\/images\/avatar.png","width":528,"height":560}},"author":{"@type":"Person","name":"BlueIsle"},"description":"DynamicsAX项目上线期初数据的初始化-期初余额导入功能"}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=明礼至卓><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw'></i></span>明礼至卓</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/ title=GitHub><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=明礼至卓><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw'></i></span>明礼至卓</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/ title=GitHub><i class='fab fa-github fa-fw'></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Dynamics AX GoLive Data Import</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>BlueIsle</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/dynamicsax/><i class="far fa-folder fa-fw" aria-hidden=true></i>Dynamicsax</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2020-01-13>2020-01-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1083 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 6 分钟&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><ul><li><a href=#gl总帐>GL：总帐</a></li><li><a href=#ap应付账款>AP：应付账款</a></li><li><a href=#aror应收账款其他应收款>AR/OR：应收账款，其他应收款</a></li><li><a href=#inventory存货>INVENTORY：存货</a></li><li><a href=#fa固定资产>FA：固定资产</a></li></ul></li></ul></nav></div></div><div class=content id=content><p>期初余额的导入程序大致都比较相似，只是创建的日记账有些区别，源代码在文末。</p><p>期初数据模板请跳转至<a href=https://www.nashome.cn/posts/dynamics-ax-golive-data-initialize/ rel>Dynamics AX GoLive Data Initialize</a></p><h2 id=gl总帐>GL：总帐</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>static void ImportTBGL(Args _args)
+</span></span><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>    try
+</span></span><span class=line><span class=cl>    {
+</span></span><span class=line><span class=cl>        axLedgerJournalTable = new AxLedgerJournalTable();
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.parmJournalName(&#34;FIOpening&#34;);
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.parmName(&#34;TB GL 20190831&#34;);
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.save();
+</span></span><span class=line><span class=cl>        numImported = 0;
+</span></span><span class=line><span class=cl>        lineNo = 1;
+</span></span><span class=line><span class=cl>        record = csvFile.read();
+</span></span><span class=line><span class=cl>        while (csvFile.status() == IO_Status::Ok)
+</span></span><span class=line><span class=cl>        {
+</span></span><span class=line><span class=cl>            record = csvFile.read();
+</span></span><span class=line><span class=cl>            lineNo = lineNo +1;
+</span></span><span class=line><span class=cl>            if (!record) break;
+</span></span><span class=line><span class=cl>            ttsBegin;
+</span></span><span class=line><span class=cl>            if (conPeek(record,1)!=&#34;&#34;)
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans = new AxLedgerJournalTrans();           			axLedgerJournalTrans.parmJournalNum(axLedgerJournalTable.ledgerJournalTable().JournalNum);             
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmTransDate(str2Date(&#34;2019/8/31&#34;,321));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmTxt(&#34;TBGL20190831&#34;);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmAccountType(LedgerJournalACType::Ledger);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmAccountNum(conPeek(record,1));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmCurrencyCode(conPeek(record,2));
+</span></span><span class=line><span class=cl>                if  (str2num(conPeek(record,3)) &gt; 0)
+</span></span><span class=line><span class=cl>                {                      axLedgerJournalTrans.parmAmountCurDebit(str2num(conPeek(record,3)));
+</span></span><span class=line><span class=cl>                } else
+</span></span><span class=line><span class=cl>                {                       axLedgerJournalTrans.parmAmountCurCredit(abs(str2num(conPeek(record,3))));
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmExchRate(round(conPeek(record,4),0.0001));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmOffsetAccountType(LedgerJournalACType::Ledger);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmOffsetAccount(&#34;9999&#34;);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.save();
+</span></span><span class=line><span class=cl>                numImported = numImported + 1;
+</span></span><span class=line><span class=cl>            } else
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                info(strfmt(&#34;line No -- %1 -- has no accountNum, not imported&#34;,lineNo));
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>            ttsCommit;
+</span></span><span class=line><span class=cl>        } //while
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><h2 id=ap应付账款>AP：应付账款</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>static void ImportTBAP(Args _args)
+</span></span><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>    try
+</span></span><span class=line><span class=cl>    {
+</span></span><span class=line><span class=cl>        axLedgerJournalTable = new AxLedgerJournalTable();
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.parmJournalName(&#34;FIOpening&#34;);
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.parmName(&#34;TB AP 20190831&#34;);
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.save();
+</span></span><span class=line><span class=cl>        numImported = 0;
+</span></span><span class=line><span class=cl>        lineNo = 1;
+</span></span><span class=line><span class=cl>        record = csvFile.read();
+</span></span><span class=line><span class=cl>        while (csvFile.status() == IO_Status::Ok)
+</span></span><span class=line><span class=cl>        {
+</span></span><span class=line><span class=cl>            record = csvFile.read();
+</span></span><span class=line><span class=cl>            lineNo = lineNo +1;
+</span></span><span class=line><span class=cl>            if (!record) break;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            ttsBegin;
+</span></span><span class=line><span class=cl>            if ((conPeek(record,1)!=&#34;&#34;)  &amp;&amp; (VendTable::find(conPeek(record,1),false)))
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans = new AxLedgerJournalTrans();
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmJournalNum(axLedgerJournalTable.ledgerJournalTable().JournalNum);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmTransDate(str2Date(&#34;2019/8/31&#34;,321));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmTxt(conPeek(record,5));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmAccountType(LedgerJournalACType::Vend);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmAccountNum(conPeek(record,1));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmInvoice(conPeek(record,2));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmDue(str2Date(conPeek(record,3),321));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmPostingProfile(conPeek(record,4));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmCurrencyCode(conPeek(record,6));
+</span></span><span class=line><span class=cl>                if  (str2num(conPeek(record,8)) &gt; 0)
+</span></span><span class=line><span class=cl>                {                      axLedgerJournalTrans.parmAmountCurDebit(str2num(conPeek(record,8)));
+</span></span><span class=line><span class=cl>                } else
+</span></span><span class=line><span class=cl>                {                 axLedgerJournalTrans.parmAmountCurCredit(abs(str2num(conPeek(record,8))));
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmExchRate(conPeek(record,7));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmOffsetAccountType(LedgerJournalACType::Ledger);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmOffsetAccount(&#34;9999&#34;);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.save();
+</span></span><span class=line><span class=cl>                numImported = numImported + 1;
+</span></span><span class=line><span class=cl>            } else
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                info(strfmt(&#34;line No -- %1 -- has no accountNum %2, not imported&#34;,lineNo,conPeek(record,1)));
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>            ttsCommit;
+</span></span><span class=line><span class=cl>        } //while
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><h2 id=aror应收账款其他应收款>AR/OR：应收账款，其他应收款</h2><p>AR和OR使用同一份模板， OR: other</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>static void ImportTBAR(Args _args)
+</span></span><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>    try
+</span></span><span class=line><span class=cl>    {
+</span></span><span class=line><span class=cl>        axLedgerJournalTable = new AxLedgerJournalTable();
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.parmJournalName(&#34;FIOpening&#34;);
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.parmName(&#34;TB AR 20190831&#34;);
+</span></span><span class=line><span class=cl>        axLedgerJournalTable.save();
+</span></span><span class=line><span class=cl>        numImported = 0;
+</span></span><span class=line><span class=cl>        lineNo = 1;
+</span></span><span class=line><span class=cl>        record = csvFile.read();
+</span></span><span class=line><span class=cl>        while (csvFile.status() == IO_Status::Ok)
+</span></span><span class=line><span class=cl>        {
+</span></span><span class=line><span class=cl>            record = csvFile.read();
+</span></span><span class=line><span class=cl>            lineNo = lineNo +1;
+</span></span><span class=line><span class=cl>            if (!record) break;
+</span></span><span class=line><span class=cl>            ttsBegin;
+</span></span><span class=line><span class=cl>            if ((conPeek(record,1)!=&#34;&#34;)  &amp;&amp; (CustTable::find(conPeek(record,1),false)))
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans = new AxLedgerJournalTrans();                axLedgerJournalTrans.parmJournalNum(axLedgerJournalTable.ledgerJournalTable().JournalNum);               
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmTransDate(str2Date(&#34;2019/8/31&#34;,321));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmTxt(conPeek(record,5));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmAccountType(LedgerJournalACType::Cust);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmAccountNum(conPeek(record,1));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmInvoice(conPeek(record,2));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmDue(str2Date(conPeek(record,3),321));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmPostingProfile(conPeek(record,4));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmCurrencyCode(conPeek(record,6));
+</span></span><span class=line><span class=cl>                if  (str2num(conPeek(record,8)) &gt; 0)
+</span></span><span class=line><span class=cl>                {                       axLedgerJournalTrans.parmAmountCurDebit(str2num(conPeek(record,8)));
+</span></span><span class=line><span class=cl>                } else
+</span></span><span class=line><span class=cl>                {                       axLedgerJournalTrans.parmAmountCurCredit(abs(str2num(conPeek(record,8))));
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmExchRate(conPeek(record,7));
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmOffsetAccountType(LedgerJournalACType::Ledger);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.parmOffsetAccount(&#34;9999&#34;);
+</span></span><span class=line><span class=cl>                axLedgerJournalTrans.save();
+</span></span><span class=line><span class=cl>                numImported = numImported + 1;
+</span></span><span class=line><span class=cl>            } else
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                info(strfmt(&#34;line No -- %1 -- has no accountNum %2 , not imported&#34;,lineNo,conPeek(record,1)));
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>            ttsCommit;
+</span></span><span class=line><span class=cl>        } //while
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><h2 id=inventory存货>INVENTORY：存货</h2><p>导入存货的时候需要注意把序列号一并导入（如果有）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>static void ImportTBInvent(Args _args)
+</span></span><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>    try
+</span></span><span class=line><span class=cl>    {
+</span></span><span class=line><span class=cl>            numImported = 0;
+</span></span><span class=line><span class=cl>            lineNo = 1;
+</span></span><span class=line><span class=cl>            axInventJournalTable    = new AxInventJournalTable();        axInventJournalTable.parmJournalNameId(&#34;Mov_Inventory_Adjust&#34;);//Mov_Inventory_Adjust
+</span></span><span class=line><span class=cl>            axInventJournalTable.parmDescription(&#34;TB Invent 20190831&#34;);
+</span></span><span class=line><span class=cl>            axInventJournalTable.save();
+</span></span><span class=line><span class=cl>            _journalId  = axInventJournalTable.inventJournalTable().JournalId;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            record = csvFile.read();
+</span></span><span class=line><span class=cl>            ttsbegin;
+</span></span><span class=line><span class=cl>            while (csvFile.status() == IO_Status::Ok)
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                record = csvFile.read();
+</span></span><span class=line><span class=cl>                lineNo = lineNo +1;
+</span></span><span class=line><span class=cl>                if (!record) break;
+</span></span><span class=line><span class=cl>                if (!InventTable::find(conPeek(record,1),false))
+</span></span><span class=line><span class=cl>                {
+</span></span><span class=line><span class=cl>                    info(strfmt(&#34;line No -- %1 -- has non existed itemNum, not imported&#34;,lineNo));
+</span></span><span class=line><span class=cl>                    continue;
+</span></span><span class=line><span class=cl>                } else
+</span></span><span class=line><span class=cl>                {
+</span></span><span class=line><span class=cl>                    axInventJournalTrans = new AxInventJournalTrans();
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmJournalId(_journalId);
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmTransDate(str2Date(&#34;2019/8/31&#34;,321));
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmItemId(conPeek(record,1));
+</span></span><span class=line><span class=cl>                    inventDim.clear();
+</span></span><span class=line><span class=cl>                    inventDim.InventSiteId      = conPeek(record,2);
+</span></span><span class=line><span class=cl>                    inventDim.InventLocationId  = conPeek(record,3);
+</span></span><span class=line><span class=cl>                    inventDim.wMSLocationId     = conPeek(record,4);
+</span></span><span class=line><span class=cl>                    if (InventTable::find(conPeek(record,1)).DimGroupId == &#34;rev&#34;)
+</span></span><span class=line><span class=cl>                    {
+</span></span><span class=line><span class=cl>                        if (strLRtrim(conPeek(record,5)) != &#34;&#34;)
+</span></span><span class=line><span class=cl>                        {
+</span></span><span class=line><span class=cl>                            inventDim.InventColorId     = conPeek(record,5);
+</span></span><span class=line><span class=cl>                            inventColor = InventColor::find(conPeek(record,5),conPeek(record,1));
+</span></span><span class=line><span class=cl>                            if (!inventColor)
+</span></span><span class=line><span class=cl>                            {
+</span></span><span class=line><span class=cl>                                  info(strfmt(&#34;line No -- %1 --, version is not exists, %2 not imported&#34;,lineNo,conPeek(record,1)));
+</span></span><span class=line><span class=cl>                                  continue;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        } else
+</span></span><span class=line><span class=cl>                        {
+</span></span><span class=line><span class=cl>                            info(strfmt(&#34;line No -- %1 -- has no version, not imported&#34;,lineNo));
+</span></span><span class=line><span class=cl>                            continue;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>                    _inventDimId                = InventDim::findOrCreate(inventDim).inventDimId;
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmInventDimId(_inventDimId);
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmQty(str2num(conPeek(record,6)));             
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmCostAmount(str2num(conPeek(record,9)));              axInventJournalTrans.parmCostPrice(round(axInventJournalTrans.parmCostAmount()/axInventJournalTrans.parmQty(),0.0001));
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.parmLedgerAccountIdOffset(&#34;9999&#34;);
+</span></span><span class=line><span class=cl>                    axInventJournalTrans.save();
+</span></span><span class=line><span class=cl>                    numImported = numImported + 1;
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            } //while
+</span></span><span class=line><span class=cl>            ……
+</span></span><span class=line><span class=cl>            //序列号
+</span></span><span class=line><span class=cl>            while (csvFile2.status() == IO_Status::Ok)
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                record = csvFile2.read();
+</span></span><span class=line><span class=cl>                lineNo = lineNo +1;
+</span></span><span class=line><span class=cl>                if (!record) break;
+</span></span><span class=line><span class=cl>               // ttsBegin;
+</span></span><span class=line><span class=cl>                if ((InventTable::find(conPeek(record,1),false)) &amp;&amp; (InventTable::find(conPeek(record,1)).CIG_SerialControl == NoYes::Yes))
+</span></span><span class=line><span class=cl>                {
+</span></span><span class=line><span class=cl>                    _itemId                     = conPeek(record,1);
+</span></span><span class=line><span class=cl>                    inventDim.clear();
+</span></span><span class=line><span class=cl>                    inventDim.InventSiteId      = conPeek(record,3);
+</span></span><span class=line><span class=cl>                    inventDim.InventLocationId  = conPeek(record,4);
+</span></span><span class=line><span class=cl>                    inventDim.wMSLocationId     = conPeek(record,5);
+</span></span><span class=line><span class=cl>                    inventDim.InventColorId     = conPeek(record,6);
+</span></span><span class=line><span class=cl>                    _inventDimId                = InventDim::findOrCreate(inventDim).inventDimId;
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.clear();
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.ItemId    = _itemId;
+</span></span><span class=line><span class=cl>                    select firstonly inventJournalTrans where
+</span></span><span class=line><span class=cl>                            inventJournalTrans.JournalId  == _journalId
+</span></span><span class=line><span class=cl>                        &amp;&amp;  inventJournalTrans.ItemId     == _itemId
+</span></span><span class=line><span class=cl>                        &amp;&amp;  inventJournalTrans.InventDimId  == _inventDimId;
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.InventTransId     = inventJournalTrans.InventTransId;
+</span></span><span class=line><span class=cl>                    //cig_inventTransSerial.Qty               =
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.InventStatus      = CIG_InventStatus::Registered;
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.inventSerialId    = conPeek(record,2);
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.TransType         = InventTransType::InventTransaction;
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.TransRefId        = _journalId;
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.DocumentId        = _journalId;
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.inventDimId       = InventDim::inventDimIdBlank();
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.initValue();
+</span></span><span class=line><span class=cl>                    cig_inventTransSerial.insert();
+</span></span><span class=line><span class=cl>                    cig_serialTable.clear();
+</span></span><span class=line><span class=cl>                    cig_serialTable.InventSerialId          = conPeek(record,2);
+</span></span><span class=line><span class=cl>                    cig_serialTable.DateCode                = conPeek(record,7);
+</span></span><span class=line><span class=cl>                    cig_serialTable.InventSerialIdCustomer  = conPeek(record,8);
+</span></span><span class=line><span class=cl>                    cig_serialTable.initValue();
+</span></span><span class=line><span class=cl>                    cig_serialTable.insert();
+</span></span><span class=line><span class=cl>                    numImported = numImported + 1;
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl>               // ttsCommit;
+</span></span><span class=line><span class=cl>            } //while
+</span></span><span class=line><span class=cl>             ttsCommit;
+</span></span><span class=line><span class=cl>            info(strfmt(&#34;%1 records imported&#34;,numImported));
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>……
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><h2 id=fa固定资产>FA：固定资产</h2><p>Fixed Assets 包括了固定资产卡片、购置、折旧，使用同一个模板用如下程序导入三次即可。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>static void ImportTBFADetailss(Args _args)
+</span></span><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>    try
+</span></span><span class=line><span class=cl>    {
+</span></span><span class=line><span class=cl>        numImported = 0;
+</span></span><span class=line><span class=cl>        lineNo = 1;
+</span></span><span class=line><span class=cl>        record = csvFile.read();
+</span></span><span class=line><span class=cl>        while (csvFile.status() == IO_Status::Ok)
+</span></span><span class=line><span class=cl>        {
+</span></span><span class=line><span class=cl>            record = csvFile.read();
+</span></span><span class=line><span class=cl>            lineNo = lineNo +1;
+</span></span><span class=line><span class=cl>            if (!record) break;
+</span></span><span class=line><span class=cl>            ttsbegin; //Save asset record.
+</span></span><span class=line><span class=cl>            if (!AssetTable::find(conPeek(record,1),false))
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                assetTable.selectForUpdate(true);
+</span></span><span class=line><span class=cl>                assetTable.clear();
+</span></span><span class=line><span class=cl>                assetTable.AssetId = conPeek(record,1);
+</span></span><span class=line><span class=cl>                assetTable.AssetGroup = conPeek(record,4);
+</span></span><span class=line><span class=cl>                assetTable.NameAlias  = conPeek(record,3);
+</span></span><span class=line><span class=cl>                assetTable.Model        = conPeek(record,7);
+</span></span><span class=line><span class=cl>                assetTable.Location     = conPeek(record,8);
+</span></span><span class=line><span class=cl>                assetTable.SerialNum    = conPeek(record,22);
+</span></span><span class=line><span class=cl>                assetTable.Responsible  = conPeek(record,20);
+</span></span><span class=line><span class=cl>                //assetTable.AssetType = AssetType::Intangible; // Type of Asset Tangible, InTangible, Financial, GoodWill etc
+</span></span><span class=line><span class=cl>                assetTable.Name = conPeek(record,2);                 // Asset Name
+</span></span><span class=line><span class=cl>                assetTable.Quantity = 1;                                   // Quantity of Asset
+</span></span><span class=line><span class=cl>                assetTable.PropertyType = AssetPropertyType::FixedAsset; // Asset property type FixedAsset, ContinuingProperty etc
+</span></span><span class=line><span class=cl>                assetTable.insert(true); // Create Fixed Asset
+</span></span><span class=line><span class=cl>                serviceLife = conPeek(record,13);
+</span></span><span class=line><span class=cl>                LifeTimeRest = conPeek(record,15);
+</span></span><span class=line><span class=cl>                DrunDate    = conPeek(record,12);
+</span></span><span class=line><span class=cl>                ADate   = conPeek(record,10);
+</span></span><span class=line><span class=cl>                Costcenter = conPeek(record,18);
+</span></span><span class=line><span class=cl>                while select assetGroupBookSetup
+</span></span><span class=line><span class=cl>                        where assetGroupBookSetup.AssetGroup == assetTable.AssetGroup
+</span></span><span class=line><span class=cl>                {
+</span></span><span class=line><span class=cl>                    if (assetTable.AssetGroup == assetGroupBookSetup.AssetGroup)
+</span></span><span class=line><span class=cl>                    {
+</span></span><span class=line><span class=cl>                        assetBook.clear();
+</span></span><span class=line><span class=cl>                        assetBook.initValue();
+</span></span><span class=line><span class=cl>                        assetBook.BookId     = assetGroupBookSetup.BookId;
+</span></span><span class=line><span class=cl>                        assetBook.AssetId    = assetTable.AssetId;
+</span></span><span class=line><span class=cl>                        assetBook.AssetGroup = assetGroupBookSetup.AssetGroup;
+</span></span><span class=line><span class=cl>                        assetBook.initFromAssetGroupBookSetup();
+</span></span><span class=line><span class=cl>                        assetBook.SortingId  = assetTable.SortingId;
+</span></span><span class=line><span class=cl>                        assetBook.SortingId2 = assetTable.SortingId2;
+</span></span><span class=line><span class=cl>                        assetBook.SortingId3 = assetTable.SortingId3;
+</span></span><span class=line><span class=cl>                        assetbook.ServiceLife = str2num(serviceLife);
+</span></span><span class=line><span class=cl>                        assetbook.LifeTimeRest = str2num(LifeTimeRest);
+</span></span><span class=line><span class=cl>                        assetbook.DepreciationStartDate = str2date(DrunDate,321);
+</span></span><span class=line><span class=cl>                        assetbook.AcquisitionDate       = str2date(ADate,321);
+</span></span><span class=line><span class=cl>                        assetbook.Dimension[2]          = Costcenter;
+</span></span><span class=line><span class=cl>                        assetBook.insert();
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl>                numImported = numImported + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>            else
+</span></span><span class=line><span class=cl>            {
+</span></span><span class=line><span class=cl>                info(&#34;Exists&#34;);
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>            ttscommit;
+</span></span><span class=line><span class=cl>        } //while
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>    ……
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><p>这里是<a href=https://pan.nashome.cn/s/6sPoQy46gcgkF9H target=_blank rel="noopener noreffer">导入功能的源代码</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2022-10-19</span></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/posts/dynamics-ax-golive-data-import/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/ax2009/>Ax2009</a>,&nbsp;<a href=/tags/data/>Data</a>,&nbsp;<a href=/tags/golive/>Golive</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/dynamics-ax-auto-generate-xml/ class=prev rel=prev title="Dynamics AX Auto Generate XML"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Dynamics AX Auto Generate XML</a>
+<a href=/posts/dynamics-ax-webservice/ class=next rel=next title="Using webservice to connect with Dynamics AX">Using webservice to connect with Dynamics AX<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.104.3">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2016 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>BlueIsle</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{algoliaAppID:"EO42BFKWB5",algoliaIndex:"hugoblogloveit",algoliaSearchKey:"d3ef25fc7cb90a144ea0139748e4cf6b",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"},twemoji:!0}</script><script type=text/javascript src=/js/theme.min.js></script><script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-105751499-1",{anonymize_ip:!0})</script><script type=text/javascript src="https://www.googletagmanager.com/gtag/js?id=UA-105751499-1" async></script></body></html>
