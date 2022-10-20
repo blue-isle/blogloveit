@@ -25,4 +25,8 @@ jobs:
           personal_token: ${{ secrets.personal_token }} 
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./public
+<<<<<<< HEAD
           commit_message: ${{ github.event.head_commit.message }}
+=======
+          enable_jekyll: true
+>>>>>>> 6c8469f3d99846f8a25560d525440b202a8ea85b
