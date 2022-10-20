@@ -1,10 +1,8 @@
+# 
+
 # 用 Hugo 配合 Algolia 实现高效美观的站内搜索
 
 > **本文同步更新至 [Youtube ](https://youtu.be/D77dMN_U4YA) 和 [BiliBili ](https://www.bilibili.com/video/av91537755/)**
->
-> 作者已经在最新的主题中加入了Algolia搜索，现在只要在配置文件中开启一下即可。
-
-<!--more-->
 
 ## 前言
 
@@ -309,7 +307,7 @@ $(function() {
 
 
  {{ $res := resources.Get "/js/search.js" }}
-<script src= "{{ $res.RelPermalink }}" type="text/javascript"></script>
+<script src= "{[ $res.RelPermalink ]}" type="text/javascript"></script>
 ```
 
 ### 添加锚点
@@ -318,10 +316,10 @@ $(function() {
 
 ```html
 <div class="navbar-menu">
-            {{ $currentPage := . }}
-            {{ range .Site.Menus.main }}
-            <a class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) | or (eq $currentPage.RelPermalink .URL) }} active{{ end }}"
-                href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name | safeHTML }}</a>
+            {[ $currentPage := . ]}
+            {[ range .Site.Menus.main ]}
+            <a class="menu-item{[ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) | or (eq $currentPage.RelPermalink .URL) ]} active{[ end ]}"
+                href="{[ .URL | absLangURL ]}" title="{[ .Title ]}">{[ .Name | safeHTML ]}</a>
             {{ end }}
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
             <!-- 添加的代码 -->
@@ -329,3 +327,4 @@ $(function() {
             <!-- 添加代码结束 -->
         </div>
 ```
+
