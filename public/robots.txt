@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://blue-isle.github.io/sitemap.xml
+Sitemap: https://www.mingzhuo.tk/sitemap.xml
