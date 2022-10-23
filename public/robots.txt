@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://www.mingzhuo.tk/sitemap.xml
+Sitemap: https://mingzhuo.tk/sitemap.xml

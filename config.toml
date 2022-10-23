@@ -1,4 +1,4 @@
-baseURL = "https://www.mingzhuo.tk"
+baseURL = "https://mingzhuo.tk"
 # [en, zh-cn, fr, pl, ...] determines default content language
 # [en, zh-cn, fr, pl, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
@@ -50,14 +50,14 @@ enableEmoji = true
         url = "/categories/"
         title = ""
         weight = 3
-      [[languages.zh-cn.menu.main]]
-        identifier = "github"
-        pre = "<i class='fab fa-github fa-fw'></i>"
-        post = ""
-        name = ""
-        url = ""
-        title = "GitHub"
-        weight = 4
+     # [[languages.zh-cn.menu.main]]
+      #  identifier = "github"
+    #    pre = "<i class='fab fa-github fa-fw'></i>"
+     #   post = ""
+     #   name = ""
+     #   url = ""
+     #   title = "GitHub"
+     #   weight = 4
     [languages.zh-cn.params]
       description = "A blog recording my life"
       keywords = ["Dynamics AX", "Github" ,"Linux", "Synology","HUGO","Tutorial","Technology"]
@@ -69,7 +69,7 @@ enableEmoji = true
         iconColor = "#5bbad5"
         tileColor = "#da532c"
       [languages.zh-cn.params.search]
-        enable = true
+        enable = false
         type = "algolia"
         contentLength = 4000
         placeholder = ""
@@ -102,11 +102,11 @@ enableEmoji = true
       [languages.zh-cn.params.social]
         GitHub = ""
         Instagram = ""
-        Email = ""
+        Email = "blue_isle@qq.com"
         Telegram = ""
         Youtubechannel = ""
         Bilibili = ""
-        RSS = true
+        # RSS = true
 [params]
   version = "0.2.X"
   # 网站默认主题 ("light", "dark", "auto")
@@ -133,7 +133,7 @@ enableEmoji = true
     hugo = true
     copyright = true
     author = true
-    since = 2016
+    since = 2022
   # icp = '<a href="http://www.beian.miit.gov.cn">沪ICP备17033498号</a>'
   # license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
   # Section (所有文章) 页面配置
@@ -225,9 +225,9 @@ enableEmoji = true
         clientId = ""
         clientSecret = ""
       [params.page.comment.valine]
-        enable = false
-        appId = 'V2oqmWdqU1a1AOOswFxyF4s7-MdYXbMMI'
-        appKey = 'cIUuNAppKNSRbeWVyNEwTDwS'
+        enable = true
+        appId = 'InwVUgHkUFo1wfiL3tXgD3Kk-gzGzoHsz'
+        appKey = 'yieD0p1vMBdy6bv87fvM7K4K'
         placeholder = ""
         avatar = "mm"
         meta= ""
